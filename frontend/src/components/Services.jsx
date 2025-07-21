@@ -3,6 +3,13 @@ import { Button } from './ui/button';
 import { Film, Camera, Globe, Megaphone, Play, Edit, Palette } from 'lucide-react';
 
 const Services = () => {
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const services = [
     {
       icon: <Film className="w-8 h-8" />,
@@ -99,6 +106,7 @@ const Services = () => {
               </div>
               
               <Button 
+                onClick={scrollToContact}
                 className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all duration-200"
                 variant="outline"
               >
@@ -117,6 +125,7 @@ const Services = () => {
           </p>
           <Button 
             size="lg" 
+            onClick={scrollToContact}
             className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg transition-all duration-200 transform hover:scale-105"
           >
             Start Your Project
