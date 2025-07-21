@@ -3,6 +3,13 @@ import { Button } from './ui/button';
 import { Play, ArrowRight, Camera, Film, Megaphone } from 'lucide-react';
 
 const Hero = () => {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center relative overflow-hidden">
       {/* Background Elements */}
@@ -35,6 +42,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button 
                 size="lg" 
+                onClick={() => scrollToSection('portfolio')}
                 className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg transition-all duration-200 transform hover:scale-105"
               >
                 <Play className="w-5 h-5 mr-2" />
@@ -43,6 +51,7 @@ const Hero = () => {
               <Button 
                 variant="outline" 
                 size="lg" 
+                onClick={() => scrollToSection('contact')}
                 className="border-gray-600 text-white hover:bg-gray-800 px-8 py-3 rounded-lg transition-all duration-200"
               >
                 Get Quote
@@ -69,7 +78,10 @@ const Hero = () => {
           
           {/* Right Content - Services Preview */}
           <div className="space-y-6">
-            <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700">
+            <div 
+              className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700 cursor-pointer hover:scale-105 transition-all duration-300"
+              onClick={() => scrollToSection('services')}
+            >
               <div className="flex items-center mb-4">
                 <Film className="w-6 h-6 text-red-500 mr-3" />
                 <h3 className="text-lg font-semibold text-white">Video Production</h3>
@@ -80,7 +92,10 @@ const Hero = () => {
               <div className="text-red-400 font-semibold">₹700 - ₹10,000</div>
             </div>
             
-            <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700">
+            <div 
+              className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700 cursor-pointer hover:scale-105 transition-all duration-300"
+              onClick={() => scrollToSection('services')}
+            >
               <div className="flex items-center mb-4">
                 <Megaphone className="w-6 h-6 text-orange-500 mr-3" />
                 <h3 className="text-lg font-semibold text-white">Digital Marketing</h3>
@@ -91,7 +106,10 @@ const Hero = () => {
               <div className="text-orange-400 font-semibold">Custom Pricing</div>
             </div>
             
-            <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700">
+            <div 
+              className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700 cursor-pointer hover:scale-105 transition-all duration-300"
+              onClick={() => scrollToSection('services')}
+            >
               <div className="flex items-center mb-4">
                 <Camera className="w-6 h-6 text-yellow-500 mr-3" />
                 <h3 className="text-lg font-semibold text-white">Ad Shoots</h3>
