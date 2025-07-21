@@ -2,13 +2,20 @@ import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
 
 const Footer = () => {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="bg-gray-900 border-t border-gray-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-1">
-            <h3 className="text-2xl font-bold text-white mb-4">
+            <h3 className="text-2xl font-bold text-white mb-4 cursor-pointer" onClick={() => scrollToSection('home')}>
               Cassferr <span className="text-red-500">Media</span>
             </h3>
             <p className="text-gray-300 text-sm mb-6">
@@ -41,34 +48,34 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-white mb-4">Services</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('services')} className="text-gray-300 hover:text-white transition-colors duration-200 text-left">
                   Short Form Videos
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('services')} className="text-gray-300 hover:text-white transition-colors duration-200 text-left">
                   Long Form Videos
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('services')} className="text-gray-300 hover:text-white transition-colors duration-200 text-left">
                   Ad Shoots
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('services')} className="text-gray-300 hover:text-white transition-colors duration-200 text-left">
                   Website Development
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('services')} className="text-gray-300 hover:text-white transition-colors duration-200 text-left">
                   Digital Marketing
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('services')} className="text-gray-300 hover:text-white transition-colors duration-200 text-left">
                   Post Production
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -78,29 +85,29 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#home" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('home')} className="text-gray-300 hover:text-white transition-colors duration-200 text-left">
                   Home
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#about" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('services')} className="text-gray-300 hover:text-white transition-colors duration-200 text-left">
                   Services
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#portfolio" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('portfolio')} className="text-gray-300 hover:text-white transition-colors duration-200 text-left">
                   Portfolio
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#contact" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-white transition-colors duration-200 text-left">
                   Contact
-                </a>
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('about')} className="text-gray-300 hover:text-white transition-colors duration-200 text-left">
+                  About Us
+                </button>
               </li>
             </ul>
           </div>
@@ -109,14 +116,14 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Contact Info</h4>
             <div className="space-y-3 text-sm">
-              <div className="flex items-center text-gray-300">
+              <a href="tel:+919905159591" className="flex items-center text-gray-300 hover:text-white transition-colors duration-200">
                 <Phone className="w-4 h-4 mr-3 text-red-500" />
                 <span>+91 9905159591</span>
-              </div>
-              <div className="flex items-center text-gray-300">
+              </a>
+              <a href="mailto:Cassferrofficial@gmail.com" className="flex items-center text-gray-300 hover:text-white transition-colors duration-200">
                 <Mail className="w-4 h-4 mr-3 text-red-500" />
                 <span>Cassferrofficial@gmail.com</span>
-              </div>
+              </a>
               <div className="flex items-start text-gray-300">
                 <MapPin className="w-4 h-4 mr-3 text-red-500 mt-0.5" />
                 <span>Moti Residency, Ghaziabad<br />Meerut Road - 201003</span>
