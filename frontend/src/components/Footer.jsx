@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, Linkedin, Twitter, Globe, MessageCircle, Camera } from 'lucide-react';
 
 const Footer = () => {
   const scrollToSection = (sectionId) => {
@@ -8,6 +8,64 @@ const Footer = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // Social media links for CassFerr Media
+  const socialLinks = [
+    { 
+      name: 'Instagram', 
+      icon: <Instagram className="w-5 h-5" />, 
+      url: 'https://instagram.com/cassferrmedia',
+      handle: '@cassferrmedia'
+    },
+    { 
+      name: 'YouTube', 
+      icon: <Youtube className="w-5 h-5" />, 
+      url: 'https://youtube.com/@cassferrmedia',
+      handle: '@cassferrmedia'
+    },
+    { 
+      name: 'Twitter', 
+      icon: <Twitter className="w-5 h-5" />, 
+      url: 'https://twitter.com/cassferrmedia',
+      handle: '@cassferrmedia'
+    },
+    { 
+      name: 'Facebook', 
+      icon: <Facebook className="w-5 h-5" />, 
+      url: 'https://facebook.com/cassferrmedia',
+      handle: 'CassFerr Media'
+    },
+    { 
+      name: 'LinkedIn', 
+      icon: <Linkedin className="w-5 h-5" />, 
+      url: 'https://www.linkedin.com/in/cassferr-media-a461a1346',
+      handle: 'Cassferr Media'
+    },
+    { 
+      name: 'Telegram', 
+      icon: <MessageCircle className="w-5 h-5" />, 
+      url: 'https://t.me/cassferrmedia',
+      handle: '@cassferrmedia'
+    },
+    { 
+      name: 'Discord', 
+      icon: <MessageCircle className="w-5 h-5" />, 
+      url: 'https://discord.gg/cassferrmedia',
+      handle: 'CassFerr Media'
+    },
+    { 
+      name: 'Snapchat', 
+      icon: <Camera className="w-5 h-5" />, 
+      url: 'https://snapchat.com/add/cassferrmedia',
+      handle: '@cassferrmedia'
+    },
+    { 
+      name: 'Linktree', 
+      icon: <Globe className="w-5 h-5" />, 
+      url: 'https://linktr.ee/cassferrmedia',
+      handle: 'All Links'
+    }
+  ];
 
   return (
     <footer className="bg-gray-900 border-t border-gray-800">
@@ -22,24 +80,21 @@ const Footer = () => {
               Professional media production and digital marketing services 
               that bring your vision to life.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                <Youtube className="w-5 h-5" />
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/cassferr-media-a461a1346" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
+            
+            {/* Main Social Links */}
+            <div className="flex flex-wrap gap-3 mb-4">
+              {socialLinks.slice(0, 5).map((social, index) => (
+                <a 
+                  key={index}
+                  href={social.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors duration-200 p-2 bg-gray-800/50 rounded-lg hover:bg-gray-700"
+                  title={social.handle}
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
 
@@ -112,10 +167,10 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact & Social Info */}
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Contact Info</h4>
-            <div className="space-y-3 text-sm">
+            <div className="space-y-3 text-sm mb-6">
               <a href="tel:+919905159591" className="flex items-center text-gray-300 hover:text-white transition-colors duration-200">
                 <Phone className="w-4 h-4 mr-3 text-red-500" />
                 <span>+91 9905159591</span>
@@ -129,11 +184,53 @@ const Footer = () => {
                 <span>Moti Residency, Ghaziabad<br />Meerut Road - 201003</span>
               </div>
             </div>
+            
+            {/* Additional Social Links */}
+            <div>
+              <h5 className="text-sm font-semibold text-white mb-2">More Platforms</h5>
+              <div className="space-y-2 text-xs">
+                {socialLinks.slice(5).map((social, index) => (
+                  <a 
+                    key={index}
+                    href={social.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center text-gray-300 hover:text-white transition-colors duration-200"
+                  >
+                    {social.icon}
+                    <span className="ml-2">{social.handle}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Social Media Bar */}
+        <div className="border-t border-gray-800 mt-8 pt-6">
+          <div className="text-center mb-6">
+            <h4 className="text-lg font-semibold text-white mb-4">Follow CassFerr Media</h4>
+            <div className="flex flex-wrap justify-center gap-4">
+              {socialLinks.map((social, index) => (
+                <a 
+                  key={index}
+                  href={social.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center px-4 py-2 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-700 hover:border-red-500 transition-all duration-200 text-gray-300 hover:text-white group"
+                >
+                  <span className="group-hover:scale-110 transition-transform duration-200">
+                    {social.icon}
+                  </span>
+                  <span className="ml-2 text-sm">{social.name}</span>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
             © 2025 Cassferr Media. All rights reserved.
           </p>
