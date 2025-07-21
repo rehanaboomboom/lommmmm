@@ -81,6 +81,17 @@ const Portfolio = () => {
     ? portfolioItems 
     : portfolioItems.filter(item => item.category === activeCategory);
 
+  const openVideoInNewTab = (videoUrl) => {
+    const youtubeUrl = videoUrl.replace('/embed/', '/watch?v=');
+    window.open(youtubeUrl, '_blank');
+  };
+
+  const [visibleItems, setVisibleItems] = useState(6);
+
+  const loadMoreItems = () => {
+    setVisibleItems(prevCount => prevCount + 3);
+  };
+
   return (
     <section id="portfolio" className="py-20 bg-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,13 +125,13 @@ const Portfolio = () => {
 
         {/* Portfolio Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredItems.map((item) => (
+          {filteredItems.slice(0, visibleItems).map((item) => (
             <div 
               key={item.id} 
               className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 overflow-hidden group hover:scale-105 transition-all duration-300"
             >
               {/* Video Thumbnail */}
-              <div className="relative aspect-video bg-gray-800 overflow-hidden">
+              <div className="relative aspect-video bg-gray-800 overflow-hidden cursor-pointer">
                 <iframe
                   src={item.videoUrl}
                   title={item.title}
@@ -131,8 +142,11 @@ const Portfolio = () => {
                 ></iframe>
                 
                 {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <Play className="w-12 h-12 text-white" />
+                <div 
+                  className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+                  onClick={() => openVideoInNewTab(item.videoUrl)}
+                >
+                  <Play className="w-12 h-12 text-white cursor-pointer" />
                 </div>
               </div>
 
@@ -158,6 +172,7 @@ const Portfolio = () => {
                 <Button 
                   variant="outline" 
                   size="sm"
+                  onClick={() => openVideoInNewTab(item.videoUrl)}
                   className="w-full border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-200"
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
@@ -169,15 +184,18 @@ const Portfolio = () => {
         </div>
 
         {/* Load More */}
-        <div className="text-center mt-12">
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white px-8 py-3 transition-all duration-200"
-          >
-            Load More Projects
-          </Button>
-        </div>
+        {visibleItems < filteredItems.length && (
+          <div className="text-center mt-12">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={loadMoreItems}
+              className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white px-8 py-3 transition-all duration-200"
+            >
+              Load More Projects
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
