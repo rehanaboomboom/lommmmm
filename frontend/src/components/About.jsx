@@ -1,7 +1,47 @@
 import React from 'react';
-import { Award, Users, Target, Zap } from 'lucide-react';
+import { Award, Users, Target, Zap, Instagram, Twitter, Youtube, Linkedin, MessageCircle, Globe } from 'lucide-react';
 
 const About = () => {
+  // Social media links for CassFerr Media
+  const socialLinks = [
+    { 
+      name: 'LinkedIn', 
+      icon: <Linkedin className="w-6 h-6" />, 
+      url: 'https://www.linkedin.com/in/cassferr-media-a461a1346',
+      color: 'bg-blue-600'
+    },
+    { 
+      name: 'Instagram', 
+      icon: <Instagram className="w-6 h-6" />, 
+      url: 'https://instagram.com/cassferrmedia',
+      color: 'bg-gradient-to-r from-purple-500 to-pink-500'
+    },
+    { 
+      name: 'YouTube', 
+      icon: <Youtube className="w-6 h-6" />, 
+      url: 'https://youtube.com/@cassferrmedia',
+      color: 'bg-red-600'
+    },
+    { 
+      name: 'Twitter', 
+      icon: <Twitter className="w-6 h-6" />, 
+      url: 'https://twitter.com/cassferrmedia',
+      color: 'bg-blue-400'
+    },
+    { 
+      name: 'Telegram', 
+      icon: <MessageCircle className="w-6 h-6" />, 
+      url: 'https://t.me/cassferrmedia',
+      color: 'bg-blue-500'
+    },
+    { 
+      name: 'Linktree', 
+      icon: <Globe className="w-6 h-6" />, 
+      url: 'https://linktr.ee/cassferrmedia',
+      color: 'bg-green-500'
+    }
+  ];
+
   return (
     <section id="about" className="py-20 bg-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,21 +116,52 @@ const About = () => {
           </div>
         </div>
 
-        {/* Team Section */}
-        <div className="text-center">
-          <h3 className="text-2xl font-bold text-white mb-8">Connect With Us</h3>
-          <div className="flex justify-center space-x-8">
+        {/* Social Media Section */}
+        <div className="text-center mb-12">
+          <h3 className="text-2xl font-bold text-white mb-8">Connect With CassFerr Media</h3>
+          <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+            Follow us across all platforms to stay updated with our latest work, 
+            behind-the-scenes content, and industry insights.
+          </p>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {socialLinks.map((social, index) => (
+              <a 
+                key={index}
+                href={social.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`${social.color} p-6 rounded-2xl border border-gray-700/50 hover:scale-105 transition-all duration-300 group flex flex-col items-center justify-center min-h-[120px]`}
+              >
+                <div className="text-white mb-3 group-hover:scale-110 transition-transform duration-300">
+                  {social.icon}
+                </div>
+                <p className="text-white font-semibold text-sm">{social.name}</p>
+                <p className="text-white/80 text-xs mt-1">@cassferrmedia</p>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center bg-gradient-to-r from-red-500/10 to-orange-500/10 p-8 rounded-2xl border border-red-500/20">
+          <h3 className="text-2xl font-bold text-white mb-4">Ready to Work Together?</h3>
+          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+            Let's bring your creative vision to life with professional media production 
+            and strategic digital marketing solutions.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="https://www.linkedin.com/in/cassferr-media-a461a1346" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="bg-gray-800/50 backdrop-blur-sm p-4 rounded-xl border border-gray-700 hover:border-blue-500 transition-all duration-200 transform hover:scale-105"
+              href="tel:+919905159591"
+              className="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-200 transform hover:scale-105"
             >
-              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-3 mx-auto">
-                <span className="text-white font-bold text-lg">in</span>
-              </div>
-              <p className="text-white font-semibold">LinkedIn</p>
-              <p className="text-gray-400 text-sm">Professional Network</p>
+              Call Now: +91 9905159591
+            </a>
+            <a 
+              href="mailto:Cassferrofficial@gmail.com"
+              className="inline-flex items-center px-6 py-3 border border-gray-600 text-white hover:bg-gray-800 rounded-lg transition-all duration-200"
+            >
+              Email Us
             </a>
           </div>
         </div>
